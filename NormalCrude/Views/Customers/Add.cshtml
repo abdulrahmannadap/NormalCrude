@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model BaseModel
+@using(Html.BeginForm("Add","Customers",FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(c =>c.Customer.CustomerName)
+        @Html.TextBoxFor(c => c.Customer.CustomerName,new {@class="form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(c =>c.Customer.Feedback)
+        @Html.TextBoxFor(c => c.Customer.Feedback,new {@class="form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(c =>c.Customer.Price)
+        @Html.TextBoxFor(c => c.Customer.Price,new {@class="form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(c =>c.Membarship.MembarshipName)
+        @Html.DropDownListFor(c => c.Membarship.MembarshipName,
+                               new SelectList(ViewBag.MembarshipList,"Id","MembarshipName")
+                               ,"---- Select One ----",
+                               new {@class="form-control"})
+    </div>
+    <input type="submit" value="Submit" class="btn btn-outline-info m-2"/>
+}
